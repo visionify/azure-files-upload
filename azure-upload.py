@@ -50,6 +50,7 @@ class AzureUploader(object):
 
         if self.zip == 'none':
             files_to_upload = list(glob.iglob(os.path.join(self.dir, '**', '*.*')))
+            files_to_upload.append(list(glob.iglob(os.path.join(self.dir, '*.*'))))
 
         elif self.zip == 'root':
             print('Commpressing directory: {}'.format(self.dir))
