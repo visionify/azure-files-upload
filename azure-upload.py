@@ -78,7 +78,7 @@ class AzureUploader(object):
 
         for file in tqdm(files_to_upload):
             try:
-                blob_client = self.azure_client.get_blob_client(file)
+                blob_client = self.azure_client.get_blob_client(os.path.basename(os.path.dirname(file)) + '/' + os.path.basename(file))
                 with open(file, 'rb') as data:
                     blob_client.upload_blob(data)
             except ResourceExistsError as ex:
